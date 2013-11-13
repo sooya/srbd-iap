@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    IAP/src/download.c 
+  * @file    IAP/src/download.c
   * @author  MCD Application Team
   * @version V3.3.0
   * @date    10/15/2010
-  * @brief   This file provides the software which allows to download an image 
+  * @brief   This file provides the software which allows to download an image
   *          to internal Flash.
   ******************************************************************************
   * @copy
@@ -17,7 +17,7 @@
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
   *
   * <h2><center>&copy; COPYRIGHT 2010 STMicroelectronics</center></h2>
-  */ 
+  */
 
 /** @addtogroup IAP
   * @{
@@ -43,7 +43,7 @@ uint8_t tab_1024[1024] =
   * @param  None
   * @retval None
   */
-void SerialDownload(void)
+int32_t SerialDownload(void)
 {
   uint8_t Number[10] = "          ";
   int32_t Size = 0;
@@ -76,6 +76,7 @@ void SerialDownload(void)
   {
     SerialPutString("\n\rFailed to receive the file!\n\r");
   }
+  return Size;
 }
 
 /**

@@ -96,7 +96,7 @@ void GetInputString(uint8_t * buffP);
 uint32_t FLASH_PagesMask(__IO uint32_t Size);
 void FLASH_DisableWriteProtectionPages(void);
 void Main_Menu(void);
-void SerialDownload(void);
+int32_t SerialDownload(void);
 void SerialUpload(void);
 
 #endif  /* _COMMON_H */

@@ -28,6 +28,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+#define DIRECT_DOWNLOAD_MODE
+
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 pFunction Jump_To_Application;
@@ -418,6 +420,20 @@ void Main_Menu(void)
   {
     FlashProtection = 0;
   }
+
+#ifdef DIRECT_DOWNLOAD_MODE
+	SerialPutString("  Download Image (Y-Modem Transfer) To Flash ------\r\n");
+	if(SerialDownload()>0)
+	{
+		JumpAddress = *(__IO uint32_t*) (ApplicationAddress + 4);
+
+		/* Jump to user application */
+		Jump_To_Application = (pFunction) JumpAddress;
+		/* Initialize user application's Stack Pointer */
+		__set_MSP(*(__IO uint32_t*) ApplicationAddress);
+		Jump_To_Application();
+	}
+#endif
 
   while (1)
   {
