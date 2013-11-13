@@ -1,0 +1,7 @@
+#ignore global
+*.bin
+*.elf
+*.lss
+*.map
+*.sym
+obj.*
