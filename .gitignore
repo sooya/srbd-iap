@@ -1,7 +1,9 @@
 #ignore global
+.svn
 *.bin
 *.elf
 *.lss
 *.map
 *.sym
 obj.*
+.prj
